@@ -1,0 +1,78 @@
+name: Android release (signed .aab + .apk)
+
+on:
+  workflow_dispatch:
+    inputs:
+      version_code:
+        description: "Android versionCode (integer, must exceed the last uploaded)"
+        required: false
+        default: "305"
+      version_name:
+        description: "Android versionName (e.g. 1.0.1)"
+        required: false
+        default: "1.0.1"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install deps
+        run: npm ci
+
+      - name: Build web app
+        run: npm run build
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Sync Capacitor + patch Android
+        run: |
+          npx cap sync android
+          python3 scripts/patch-android.py
+        env:
+          ANDROID_VERSION_CODE: ${{ github.event.inputs.version_code }}
+          ANDROID_VERSION_NAME: ${{ github.event.inputs.version_name }}
+
+      - name: Decode upload keystore
+        run: echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 -d > "$RUNNER_TEMP/upload.keystore"
+
+      - name: Build signed .aab and .apk
+        working-directory: android
+        env:
+          KEYSTORE_PATH: ${{ runner.temp }}/upload.keystore
+          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+        run: |
+          chmod +x gradlew
+          ./gradlew bundleRelease assembleRelease --no-daemon
+
+      - name: Verify the bundle is signed
+        run: |
+          AAB=$(find android -name "*-release.aab" | head -1)
+          echo "AAB: $AAB"
+          if ! unzip -l "$AAB" | grep -qE 'META-INF/.*\.(RSA|EC)'; then
+            echo "ERROR: .aab has no signature block"; exit 1
+          fi
+          echo "Signature block present."
+
+      - name: Rename artifacts
+        run: |
+          mkdir -p out
+          cp "$(find android -name '*-release.aab' | head -1)" "out/HUS-Diagnostic-${{ github.event.inputs.version_name }}-${{ github.event.inputs.version_code }}.aab"
+          cp "$(find android -name '*-release.apk' | head -1)" "out/HUS-Diagnostic-${{ github.event.inputs.version_name }}-${{ github.event.inputs.version_code }}.apk" || true
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: hus-diagnostic-android
+          path: out/*
+          if-no-files-found: error

@@ -1,0 +1,11 @@
+node_modules
+dist
+android/app/build
+android/build
+android/.gradle
+*.tsbuildinfo
+vite.config.ts.timestamp-*.mjs
+
+# NEVER commit signing material
+certs/*.keystore
+certs/*.secret
