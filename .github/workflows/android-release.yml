@@ -6,11 +6,11 @@ on:
       version_code:
         description: "Android versionCode (integer, must exceed the last uploaded)"
         required: false
-        default: "305"
+        default: "1"
       version_name:
         description: "Android versionName (e.g. 1.0.1)"
         required: false
-        default: "1.0.1"
+        default: "1.0.0"
 
 jobs:
   build:

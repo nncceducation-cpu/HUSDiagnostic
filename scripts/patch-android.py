@@ -15,10 +15,10 @@ TARGET_SDK = "35"
 COMPILE_SDK = "35"
 AGP_VERSION = "8.7.3"
 GRADLE_VERSION = "8.9"
-# Reused package com.husdiagnostic. Original was versionCode 304 / 1.0.0.
+# Fresh package com.khorshidmohammad.husdiagnostic (new listing). Start at 1 / 1.0.0.
 # Default to 305 / 1.0.1 so a republish supersedes the old binary; override via env.
-VERSION_CODE = os.environ.get("ANDROID_VERSION_CODE", "305")
-VERSION_NAME = os.environ.get("ANDROID_VERSION_NAME", "1.0.1")
+VERSION_CODE = os.environ.get("ANDROID_VERSION_CODE", "1")
+VERSION_NAME = os.environ.get("ANDROID_VERSION_NAME", "1.0.0")
 
 def edit(path, subs, required=True):
     p = ANDROID / path

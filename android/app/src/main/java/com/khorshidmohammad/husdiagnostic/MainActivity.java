@@ -1,4 +1,4 @@
-package com.husdiagnostic;
+package com.khorshidmohammad.husdiagnostic;
 
 import com.getcapacitor.BridgeActivity;
 
