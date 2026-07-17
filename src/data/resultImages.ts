@@ -1,6 +1,8 @@
-// Example ultrasound images shown for each final diagnosis.
-// Captions reproduced verbatim from the original app (assets_images_appendixNcontent.png).
-// image1..image7 map to /appendices/appendix1..7.png.
+// Example ultrasound figures shown for each final diagnosis.
+// Images and captions reproduced from: Mohammad K, Scott JN, Leijser LM, et al.
+// Consensus Approach for Standardizing the Screening and Classification of Preterm
+// Brain Injury Diagnosed With Cranial Ultrasound: A Canadian Perspective.
+// Front Pediatr. 2021;9:618236. doi:10.3389/fped.2021.618236
 
 export interface ResultImage {
   src: string;
@@ -8,39 +10,34 @@ export interface ResultImage {
 }
 
 export const RESULT_IMAGES: Record<string, ResultImage> = {
-  image1: {
-    src: './appendices/appendix1.png',
+  // Grade I GMH-IVH -> Figure 2
+  fig2: {
+    src: './figures/fig2.jpeg',
     caption:
-      'Image 1. Ultrasound scan in a preterm infant (GA 26 weeks) shows the common pattern of Grade I GMH-IVH. (A) Coronal scan at the level of the frontal horns of the lateral ventricles. (B) Parasagittal scan through the right lateral ventricle. The location of the small echogenic clot (arrows) at the right caudothalamic notch is typical of Grade I GMH-IVH. There is no intraventricular hemorrhage or ventricular dilatation. In other cases, although unusual, larger-sized grade I GMH-IVHs may compress the foramen of Monro because of its relative close proximity to the caudothalamic notch and cause some ipsilateral ventricular obstruction. (C) Coronal view 12 weeks later shows complete resolution of the GMH-IVH.',
+      'Figure 2. Grade I GMH-IVH. (A–C) Ultrasound scan in a preterm infant (GA 26 weeks) with the common pattern of grade I GMH-IVH. (A) Coronal scan at the level of the frontal horns of the lateral ventricles. (B) Parasagittal scan through the right lateral ventricle; the echogenic clot (arrow) at the right caudothalamic notch is typical of grade I GMH-IVH. There is no IVH or ventricular dilatation. (C) Follow-up coronal scan 12 weeks later shows complete resolution of the GMH. (D–F) A different preterm infant (GA 27 weeks) with a less common location of grade I GMH-IVH. (D) Coronal scan at the level of the frontal horns. (E) Parasagittal scan through the left lateral ventricle; the clot (arrows) is centered posterior to the left caudothalamic notch but is still grade I as there is no blood within the ventricles. The echolucent portion represents cystic degeneration (liquefaction) of an older GMH-IVH. (F) Follow-up parasagittal scan 9 weeks later shows further cystic degeneration and smaller clot size.',
   },
-  image2: {
-    src: './appendices/appendix2.png',
+  // Grade II GMH-IVH -> Figure 3
+  fig3: {
+    src: './figures/fig3.jpeg',
     caption:
-      'Image 2. Ultrasound scan in a preterm infant (GA 27 weeks) shows an uncommon location of Grade I GMH-IVH. (A) Coronal scan at the level of the frontal horns of the lateral ventricles. (B) Parasagittal scan through the left lateral ventricle. The clot (arrows) is centered posterior to the left caudothalamic notch, but is still considered a Grade I GMH-IVH as there is no blood within the ventricles. The clot is non-uniform in its echogenicity, with the echolucent portion representing cystic degeneration (liquefaction) from its early evolution. There is no intraventricular blood or ventricular dilatation. (C) Parasagittal view 9 weeks later shows further cystic degeneration and smaller clot size.',
+      'Figure 3. Grade II GMH-IVH. (A–C) Ultrasound scan in a preterm infant (GA 26 weeks) with the common pattern of grade II GMH-IVH. (A) Coronal scan at the level of the frontal horns shows echogenic clot involving the caudate nucleus (arrow); no ventricular dilatation. (B) Coronal scan at the level of the trigone shows a small volume of intraventricular clot layering dependently (arrowhead). (C) Parasagittal scan through the right lateral ventricle shows the clot at the caudothalamic notch (arrow) and intraventricular hemorrhage in the occipital horn separate to choroid plexus (arrowhead). (D–F) A different preterm infant (GA 27 weeks) with a delayed pattern of grade II GMH-IVH. (D) Coronal scan initially normal 2 days after birth. (E) Follow-up coronal scan 6 days after birth shows echogenic clot in the left lateral ventricle (arrowhead); AHW < 6 mm. (F) Additional coronal view shows further echogenic intraventricular clot (arrowhead). The cUS scan showing the greatest severity in the first week should be used for classification.',
   },
-  image3: {
-    src: './appendices/appendix3.png',
+  // Grade III GMH-IVH -> Figure 4
+  fig4: {
+    src: './figures/fig4.jpeg',
     caption:
-      'Image 3. Grade II GMH-IVH. Ultrasound scan in a preterm infant (GA 26 weeks). (A) Coronal scan at the level of the frontal horns of the lateral ventricles shows echogenic clot involving caudate nucleus (arrow). No dilated ventricles. (B) Second coronal plane at the level of the trigone of the lateral ventricles shows a small burden of intraventricular clot layering dependently (arrowhead). (C) Parasagittal scan through the right lateral ventricle shows the same clot centered at the caudothalamic notch (arrow) and the intraventricular hemorrhage in the occipital horn separate to choroid plexus (arrowhead).',
+      'Figure 4. Left-sided grade III GMH-IVH. Ultrasound scan in a preterm infant (GA 25 weeks) showing bilateral IVH. (A) Coronal scan 2 days after birth shows a large left GMH-IVH (arrow) with intraventricular blood acutely distending its lateral ventricle (AHW = 7 mm). A small amount of blood in the right lateral ventricle (arrowhead) likely represents spill-over from the left. (B) Parasagittal view shows the left grade III GMH-IVH filling >50% of the distended lateral ventricle. (C) Coronal T2-weighted MR image 3 months after birth shows subtle hypointense staining at the left caudothalamic notch from hemosiderin/ferritin (arrowhead); widened subarachnoid spaces and persistent ventriculomegaly reflect tissue volume loss.',
   },
-  image4: {
-    src: './appendices/appendix4.png',
+  // PVHI -> Figure 5
+  fig5: {
+    src: './figures/fig5.jpeg',
     caption:
-      'Image 4. Grade II GMH-IVH. (A) Coronal ultrasound scan in a preterm infant (GA 27 weeks), at the level of the frontal horns of the lateral ventricles, was initially normal 2 days after birth. No GMH-IVH. (B) Repeat coronal view 6 days after birth shows echogenic clot in the left lateral ventricle (arrowhead). The AHW is < 6 mm. The frontal horns are measured at the level of the choroid plexus as it resides in the third ventricle. Normal choroid plexus occurs in the roof of the third ventricle and its extension into lateral ventricles through the foramen of Monro is visualized as a midline transverse echogenic band on coronal views (arrow). This is the correct coronal plane to measure VI and AHW. (C) Second coronal view of the frontal horns anterior to the foramen of Monro shows further echogenic intraventricular clot (arrowhead). There is no extension of choroid plexus anteriorly past the caudothalamic grooves (i.e., the frontal and occipital horns have no choroid plexus and echogenic material in these sites suggests intraventricular hemorrhage). This infant had two cUS exams in the first week of life. The cUS scan showing the greatest severity of GMH-IVH in the first week (i.e., cUS at 6 days after birth in this case) should be considered for GMH-IVH classification purposes.',
+      'Figure 5. Grade III GMH-IVH + PVHI. Ultrasound scan in a preterm infant (GA 24 weeks) with bilateral GMH-IVH and left-sided PVHI. (A) Coronal scan 2 days after birth showing a left-sided grade III GMH-IVH (arrowhead, AHW = 7 mm) and large echodensity in the left frontoparietal white matter (arrow); smaller right-sided grade II GMH-IVH (arrowhead). (B) Left parasagittal scan showing the periventricular echodensity (arrows) extending from posterior frontal to parietal white matter. (C) Follow-up coronal scan 2 weeks after birth shows the PVHI developing central echolucency (early cystic degeneration). (D) At 7 weeks, further cystic degeneration with echogenic clot debris and dilated lateral ventricles. (E,F) At 12 weeks, a large porencephalic cyst communicating with the lateral ventricle; the persisting ventriculomegaly is now partially passive (ex-vacuo).',
   },
-  image5: {
-    src: './appendices/appendix5.png',
+  // Significant ischemic injury (WMI) -> Figure 7
+  fig7: {
+    src: './figures/fig7.jpeg',
     caption:
-      'Image 5. Left Grade III GMH-IVH. Ultrasound scan in a preterm infant (GA 25 weeks), level of the bodies of the lateral ventricles, showing bilateral IVH. (A) Coronal scan 2 days after birth shows the larger left GMH-IVH (arrow) with intraventricular blood distending its lateral ventricle (AHW = 7 mm). Note also the enlarged temporal ventricular horn. A smaller right-sided grade I GMH-IVH is present with clot localized at the caudothalamic notch (arrowhead), as confirmed on parasagittal view (not shown). There is ballooning (rounding) of the right frontal ventricular horn (AHW = 6.5 mm) but it remains grade I GMH-IVH without presence of ipsilateral intraventricular clot. (B) Parasagittal view shows that the left grade III GMH-IVH fills >50% of the distended lateral ventricle. (C) Coronal FSE T2 MR image 3 months after birth shows subtle hypointense staining at the left caudothalamic notch from hemosiderin/ferritin. No porencephalic cyst. Widened subarachnoid spaces and persistent ventriculomegaly mostly reflects tissue volume loss.',
-  },
-  image6: {
-    src: './appendices/appendix6.png',
-    caption:
-      'Image 6. Significant white matter echogenicity. Ultrasound scan in a preterm infant (GA 27 weeks). (A) Coronal scan at the level of the trigone of the lateral ventricles and (B) parasagittal scan showing bilateral, mildly asymmetric periventricular flaring with large echodensity in the left parietal white matter (arrows). No intraventricular hemorrhage was present. When compared to choroid plexus, the slightly brighter echodensity of the parietal lesion is consistent with significant white matter injury in the absence of IVH. (C) Coronal view 9 weeks later shows a small group of cystic lesions has developed in the ischemic injured parietal white matter.',
-  },
-  image7: {
-    src: './appendices/appendix7.png',
-    caption:
-      'Image 7. Grade III + PVHI. Ultrasound scan in a preterm infant (GA 24 weeks) with bilateral IVH and left-sided periventricular hemorrhagic infarction. (A) Coronal scan 2 days after birth showing the intraventricular hemorrhages (arrowheads) and a large echodensity in the left frontoparietal white matter (arrow). (B) Parasagittal scan showing the echodensity (arrows) extending from the posterior frontal white matter to the parietal white matter. (C) Coronal follow-up scan 2 weeks after birth shows the area of PVHI beginning to show central echolucency indicating early cystic degeneration. (D) Coronal follow-up scan 7 weeks after birth shows further cystic degeneration post-PVHI with echogenic clot debris. Dilated lateral ventricles and echogenic ependymal lining. (E,F) Coronal and parasagittal follow-up scans at 12 weeks shows the large porencephalic cyst communicating with the lateral ventricle. Internal clot debris has cleared and ependyma is no longer echogenic. The persisting ventriculomegaly is now partially passive (i.e., ex-vacuo) in origin.',
+      'Figure 7. Spectrum of ischemic white matter injury (WMI). (A–C) Grade 1 WMI (GA 26 weeks): inhomogeneous moderately increased echogenicity (flaring/PVE) of the parietal periventricular white matter (arrows), no IVH, with full resolution 5 weeks later. (D–F) Grade 2 WMI (GA 27 weeks): asymmetric flaring in the left parietal white matter (arrow) evolving into small localized cystic lesions in both hemispheres. (G–I) Grade 3 WMI (GA 30 weeks): limited patchy echodensity evolving into extensive cystic lesions from frontal to posterior white matter. (J–L) Grade 4 WMI (GA 25 weeks): significant WMI with extensive cystic change. When brighter than choroid plexus and in the absence of IVH, these findings are consistent with significant ischemic white matter injury.',
   },
 };

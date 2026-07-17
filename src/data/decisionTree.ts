@@ -58,21 +58,21 @@ export function computeResult(a: Answers): { title: string; images?: string[] } 
 
   // [1]==YES && [4]==YES (any 4a) -> PVHI
   if (a['1'] === 'YES' && a['4'] === 'YES')
-    return { title: 'GMH-IVH is present, report as periventricular hemorrhagic infarction (PVHI).', images: ['image7'] };
+    return { title: 'GMH-IVH is present, report as periventricular hemorrhagic infarction (PVHI).', images: ['fig5'] };
   // {1:NO, 4:YES} -> significant ischemic injury
   if (a['1'] === 'NO' && a['4'] === 'YES')
-    return { title: 'GMH-IVH is NOT present, report as significant ischemic injury.', images: ['image6'] };
+    return { title: 'GMH-IVH is NOT present, report as significant ischemic injury.', images: ['fig7'] };
   // {1:NO, 4:NO} -> normal
   if (a['1'] === 'NO' && a['4'] === 'NO')
     return { title: 'Normal or negative scan' };
   // {1:YES, 2:NO, 3:NO, 4:NO} -> Grade II
   if (eq({ '1': 'YES', '2': 'NO', '3': 'NO', '4': 'NO' }))
-    return { title: 'Grade II GMH-IVH', images: ['image3', 'image4'] };
+    return { title: 'Grade II GMH-IVH', images: ['fig3'] };
   // {1:YES, 2:NO, 3:YES, 4:NO} -> Grade III
   if (eq({ '1': 'YES', '2': 'NO', '3': 'YES', '4': 'NO' }))
-    return { title: 'Grade III GMH-IVH', images: ['image5'] };
+    return { title: 'Grade III GMH-IVH', images: ['fig4'] };
   // {1:YES, 2:YES, 4:NO} -> Grade I
   if (a['1'] === 'YES' && a['2'] === 'YES' && a['4'] === 'NO')
-    return { title: 'Either common or uncommon in location + no blood in the lateral ventricle = Grade I GMH-IVH', images: ['image1', 'image2'] };
+    return { title: 'Either common or uncommon in location + no blood in the lateral ventricle = Grade I GMH-IVH', images: ['fig2'] };
   return { title: 'Please try again' };
 }

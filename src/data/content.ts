@@ -9,11 +9,29 @@ export const ABOUT_LINKS = [
   { label: 'Email Dr. Khorshid Mohammad', url: 'mailto:khorshid.mohammad@ahs.ca' },
 ];
 
-export const REFERENCES = [
-  'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4354604/',
-  'https://www.cps.ca/en/documents/position/routine-imaging-of-preterm-neonatal-brain',
-  'https://pubmed.ncbi.nlm.nih.gov/305471/',
-  'https://pubmed.ncbi.nlm.nih.gov/32218539/',
+export interface Reference {
+  citation: string;
+  url: string;
+}
+
+// Primary source. The decision tree, classification, and all example figures in
+// this app are based on this consensus paper.
+export const REFERENCES: Reference[] = [
+  {
+    citation:
+      'Mohammad K, Scott JN, Leijser LM, Zein H, Afifi J, Piedboeuf B, de Vries LS, van Wezel-Meijler G, Lee SK, Shah PS. Consensus Approach for Standardizing the Screening and Classification of Preterm Brain Injury Diagnosed With Cranial Ultrasound: A Canadian Perspective. Front Pediatr. 2021;9:618236.',
+    url: 'https://doi.org/10.3389/fped.2021.618236',
+  },
+  {
+    citation:
+      'Guillot M, Chau V, Lemyre B. Routine imaging of the preterm neonatal brain. Canadian Paediatric Society position statement.',
+    url: 'https://www.cps.ca/en/documents/position/routine-imaging-of-preterm-neonatal-brain',
+  },
+  {
+    citation:
+      'Papile LA, Burstein J, Burstein R, Koffler H. Incidence and evolution of subependymal and intraventricular hemorrhage: a study of infants with birth weights less than 1,500 gm. J Pediatr. 1978;92(4):529-534.',
+    url: 'https://pubmed.ncbi.nlm.nih.gov/305471/',
+  },
 ];
 
 export const DEFINITIONS: { title: string; bullets: string[] }[] = [
