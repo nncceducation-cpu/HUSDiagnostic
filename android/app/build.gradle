@@ -16,7 +16,7 @@ android {
     namespace "com.calgarynncc.husdiagnostic"
     compileSdk rootProject.ext.compileSdkVersion
     defaultConfig {
-        applicationId "com.calgarynncc.husdiagnostic"
+        applicationId "com.khorshidmohammad.husdiagnostic"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
