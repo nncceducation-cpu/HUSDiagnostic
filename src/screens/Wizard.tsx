@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { ChevronLeft, Check, X, RotateCcw, Home } from 'lucide-react';
 import { STEPS, computeResult, type Answers, type StepId } from '../data/decisionTree';
+import { RESULT_IMAGES } from '../data/resultImages';
 
 export default function Wizard({ onHome }: { onHome: () => void }) {
   const [current, setCurrent] = useState<StepId>('1');
   const [answers, setAnswers] = useState<Answers>({});
   const [path, setPath] = useState<StepId[]>([]);
   const [done, setDone] = useState(false);
+  const [zoom, setZoom] = useState<string | null>(null);
 
   const step = STEPS[current];
 
@@ -36,6 +38,9 @@ export default function Wizard({ onHome }: { onHome: () => void }) {
 
   if (done) {
     const result = computeResult(answers);
+    const images = (result.images ?? [])
+      .map((k) => RESULT_IMAGES[k])
+      .filter((v): v is NonNullable<typeof v> => Boolean(v));
     return (
       <>
         <Header title="Result" onBack={back} />
@@ -44,10 +49,45 @@ export default function Wizard({ onHome }: { onHome: () => void }) {
             <p className="text-xs font-semibold uppercase tracking-wide text-sky-700">Report</p>
             <p className="mt-2 text-lg font-bold leading-snug text-slate-900">{result.title}</p>
           </div>
+          {images.length > 0 && (
+            <div className="space-y-4">
+              <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                Example{images.length > 1 ? 's' : ''}
+              </p>
+              {images.map((img) => (
+                <figure key={img.src} className="overflow-hidden rounded-xl border border-slate-200">
+                  <button
+                    type="button"
+                    onClick={() => setZoom(img.src)}
+                    className="block w-full"
+                    aria-label="Enlarge image"
+                  >
+                    <img src={img.src} alt={img.caption.split('.')[0]} className="w-full" loading="lazy" />
+                  </button>
+                  <figcaption className="p-3 text-[12px] leading-relaxed text-slate-600">
+                    {img.caption}
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+          )}
           <div className="rounded-xl bg-slate-100 p-4 text-xs text-slate-500">
             This is a structured reporting aid reflecting the answers entered. It does not constitute a
             diagnostic interpretation. Verify against the source images and your unit&rsquo;s protocol.
           </div>
+          {zoom && (
+            <div
+              className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4"
+              onClick={() => setZoom(null)}
+            >
+              <img
+                src={zoom}
+                alt="Enlarged example"
+                className="max-h-full max-w-full object-contain"
+                style={{ touchAction: 'pinch-zoom' }}
+              />
+            </div>
+          )}
           <div className="flex gap-3">
             <button onClick={restart} className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-sky-700 py-3 text-sm font-semibold text-white active:bg-sky-800">
               <RotateCcw size={16} /> Start over
