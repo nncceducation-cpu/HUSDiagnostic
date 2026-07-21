@@ -11,10 +11,10 @@ It self-verifies and exits non-zero if any expected change did not land.
 import os, re, sys, pathlib
 
 ANDROID = pathlib.Path(__file__).resolve().parent.parent / "android"
-TARGET_SDK = "35"
-COMPILE_SDK = "35"
-AGP_VERSION = "8.7.3"
-GRADLE_VERSION = "8.9"
+TARGET_SDK = "36"
+COMPILE_SDK = "36"
+AGP_VERSION = "8.9.1"
+GRADLE_VERSION = "8.11.1"
 # Fresh package com.khorshidmohammad.husdiagnostic (new listing). Start at 1 / 1.0.0.
 # Default to 305 / 1.0.1 so a republish supersedes the old binary; override via env.
 VERSION_CODE = os.environ.get("ANDROID_VERSION_CODE", "1")
